@@ -26,12 +26,14 @@ All types :
 - offline : All members offline will be counted , if countBot true , Bots will also be counted
 - idle : All members idle will be counted , if countBot true , Bots will also be counted
 - dnd : All members dnd ( Do not disturb ) will be counted , if countBot true , Bots will also be counted
+- roles : All members with all roles will be counted , if countBot true , Bots will also be counted
 - bot : All Bots will be counted
 
 Parameter :
 - name : Display name of the channel , {count} will be replaced by the count , don't delete {count}
 - ID : ID of the channel ( Need to be a channel voice )
 - type : You can give multiple type you want
+- ID_ROLES : ID of roles , you can give multiple id roles you want
 - countBot : if true , Bots will also be counted
 
 WebSite for display emote : https://emojis.wiki/en/
