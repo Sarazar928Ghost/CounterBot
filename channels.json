@@ -1,0 +1,35 @@
+[
+    {
+        "name": "MEMBRES | {count} 😻",
+        "ID": "985930005643161660",
+        "type": ["members"],
+        "countBot": false
+    },
+    {
+        "name": "EN LIGNE | {count} 😻",
+        "ID": "985940682759897119",
+        "type": ["online", "dnd"],
+        "countBot": false
+    },
+    {
+        "name": "HORS LIGNE | {count} 😻",
+        "ID": "985940718520508467",
+        "type": ["offline", "idle"],
+        "countBot": false
+    },
+    {
+        "name": "ROLESBOT | {count} 😻",
+        "ID": "986341145888030720",
+        "type": ["roles"],
+        "ID_ROLES": ["986350641968447528"],
+        "countBot": true
+    }
+    ,
+    {
+        "name": "Nombre de bot | {count} 😻",
+        "ID": "986341145888030720",
+        "type": ["bot"],
+        "ID_ROLES": ["986350641968447528"],
+        "countBot": true
+    }
+]
