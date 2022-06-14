@@ -34,6 +34,8 @@ Parameter :
 - type : You can give multiple type you want
 - countBot : if true , Bots will also be counted
 
+WebSite for display emote : https://emojis.wiki/en/
+
 channels.json :
 ```json
 [
