@@ -70,8 +70,9 @@ function updateChannel()
             })
         })
         channels.forEach(channel => {
-            console.log(channel.name.replace("{count}", channel.count));
-            channel.channel.setName(channel.name.replace("{count}", channel.count));
+            const name = channel.name.replace("{count}", channel.count);
+            console.log(name);
+            channel.channel.setName(name);
         });
         console.log("Update des channels terminé !");
     }).catch((error) => {
