@@ -67,7 +67,6 @@ channels.json :
         "name": "Nombre de bot | {count} 😻",
         "ID": "986341145888030720",
         "type": ["bot"],
-        "ID_ROLES": ["986350641968447528"],
         "countBot": true
     }
 ]
