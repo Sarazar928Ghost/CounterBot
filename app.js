@@ -21,7 +21,8 @@ const types = {
 client.on('ready', async () => {
     console.log(`Logged in as ${client.user.tag}!`);
     guild = await client.guilds.fetch(ID_SERVER);
-    await Object.values(optionChannels).forEach(async (channel) => {
+    // Non monsieur ! Le await sert vraiment ! >_<
+    await optionChannels.forEach(async (channel) => {
         channel.count = 0;
         channel.channel = await guild.channels.fetch(channel.ID);
         channels.push(channel);
@@ -49,7 +50,7 @@ function updateChannel()
 
                 if(channel.type.includes(types.bot) && member.user.bot) ++channel.count;
                 
-                /* Si il n'y a pas le type bot , on arrete ici pour les bot */
+                /* Si il n'y a pas le countBot à true , on arrete ici pour les bot */
                 if(!countBot && member.user.bot) return;
 
                 /* Roles Section */
