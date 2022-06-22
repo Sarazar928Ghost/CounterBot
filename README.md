@@ -10,13 +10,12 @@ Create a new application on discord developper. Then create a new bot and give h
 
 ## Usage
 
-In the config.json put the TOKEN of your application, the ID of the bot and the ID of your server. For this you must activate the developer mode on discord in order to be able to recover the IDs.
+In the config.json put the TOKEN of your application and the ID of your server. For this you must activate the developer mode on discord in order to be able to recover the IDs.
 
 config.json : 
 ```json
 {
     "TOKEN":"UR TOKEN",
-    "KEY":"ID BOT",
     "ID_SERVER": "ID SERVER"
 }
 ```
