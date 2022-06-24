@@ -25,6 +25,14 @@ client.on('ready', async () => {
     await optionChannels.forEach(async (channel) => {
         channel.count = 0;
         channel.channel = await guild.channels.fetch(channel.ID);
+        channel.includes = {};
+        channel.includes.members = channel.type.includes(types.members);
+        channel.includes.bot = channel.type.includes(types.bot);
+        channel.includes.roles = channel.type.includes(types.roles);
+        channel.includes.offline = channel.type.includes(types.offline);
+        channel.includes.idle = channel.type.includes(types.idle);
+        channel.includes.dnd = channel.type.includes(types.dnd);
+        channel.includes.online = channel.type.includes(types.online);
         channels.push(channel);
     });
     setInterval(updateChannel, 6 * 60 * 1000); // 6 minutes ( Ne pas dépasser 2 requêtes dans une période de 10 minutes )
@@ -45,16 +53,16 @@ function updateChannel()
                 const countBot = channel.countBot;
                 /* Members Section && Bot Section */
 
-                if(channel.type.includes(types.members))
+                if(channel.includes.members)
                     if((countBot && member.user.bot) || !member.user.bot) ++channel.count;
 
-                if(channel.type.includes(types.bot) && member.user.bot) ++channel.count;
+                if(channel.includes.bot && member.user.bot) ++channel.count;
                 
                 /* Si il n'y a pas le countBot à true , on arrete ici pour les bot */
                 if(!countBot && member.user.bot) return;
 
                 /* Roles Section */
-                if(channel.type.includes(types.roles))
+                if(channel.includes.roles)
                 {
                     channel.ID_ROLES.forEach(idRole => {
                         if(!member.roles.cache.some(role => role.id === idRole)) hasRoles = false;
@@ -63,11 +71,14 @@ function updateChannel()
                 }
 
                 /* Status Section */
-                if(channel.type.includes(types.offline) && (member.presence == null || member.presence.status === types.offline)) ++channel.count;
+                if(channel.includes.offline && (member.presence == null || member.presence.status === types.offline)){
+                    ++channel.count;
+                    return;
+                }
                 if(member.presence == null) return;
-                if(channel.type.includes(types.online) && member.presence.status === types.online) ++channel.count;
-                else if(channel.type.includes(types.dnd) && member.presence.status === types.dnd) ++channel.count;
-                else if(channel.type.includes(types.idle) && member.presence.status === types.idle) ++channel.count;
+                if(channel.includes.online && member.presence.status === types.online) ++channel.count;
+                else if(channel.includes.dnd && member.presence.status === types.dnd) ++channel.count;
+                else if(channel.includes.idle && member.presence.status === types.idle) ++channel.count;
             })
         })
         channels.forEach(channel => {
