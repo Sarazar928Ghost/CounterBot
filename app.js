@@ -26,13 +26,7 @@ client.on('ready', async () => {
         channel.count = 0;
         channel.channel = await guild.channels.fetch(channel.ID);
         channel.includes = {};
-        channel.includes.members = channel.type.includes(types.members);
-        channel.includes.bot = channel.type.includes(types.bot);
-        channel.includes.roles = channel.type.includes(types.roles);
-        channel.includes.offline = channel.type.includes(types.offline);
-        channel.includes.idle = channel.type.includes(types.idle);
-        channel.includes.dnd = channel.type.includes(types.dnd);
-        channel.includes.online = channel.type.includes(types.online);
+        Object.values(types).forEach(type => channel.includes[type] = channel.type.includes(type));
         channels.push(channel);
     });
     setInterval(updateChannel, 6 * 60 * 1000); // 6 minutes ( Ne pas dépasser 2 requêtes dans une période de 10 minutes )
